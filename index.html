@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Gaurii 💖</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* Login */
+#login {
+    margin-top: 150px;
+}
+
+input, button {
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    margin: 5px;
+}
+
+button {
+    background: #ff4b5c;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Content */
+.container {
+    display: none;
+    padding: 20px;
+}
+
+/* Images */
+img {
+    width: 90%;
+    max-width: 280px;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+/* Cards */
+.card {
+    background: rgba(255,255,255,0.15);
+    padding: 15px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+/* Typing */
+#typing {
+    font-size: 20px;
+    margin-top: 20px;
+    min-height: 60px;
+}
+
+/* Hearts */
+.heart {
+    position: fixed;
+    bottom: -10px;
+    font-size: 20px;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    0% {transform: translateY(0); opacity: 1;}
+    100% {transform: translateY(-100vh); opacity: 0;}
+}
+
+/* Popup */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background: white;
+    color: #ff4b5c;
+    padding: 25px;
+    border-radius: 20px;
+    z-index: 1000;
+    text-align: center;
+    animation: pop 0.4s forwards;
+}
+
+@keyframes pop {
+    to { transform: translate(-50%, -50%) scale(1); }
+}
+
+.popup button {
+    background: #ff4b5c;
+    color: white;
+}
+
+/* Secret Button */
+.secret-btn {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    opacity: 0;
+}
+</style>
+
+<script>
+function checkPassword() {
+    var password = document.getElementById("password").value;
+    if (password === "gauriabhi@15") {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("content").style.display = "block";
+        startTyping();
+        startHearts();
+        document.getElementById("bgmusic").play();
+    } else {
+        alert("Wrong password 😢");
+    }
+}
+
+/* Typing */
+var text = "My dearest Gaurii 💖... You are my happiness, my peace, and my forever. I love you more than words can express ❤️";
+var i = 0;
+
+function startTyping() {
+    function type() {
+        if (i < text.length) {
+            document.getElementById("typing").innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, 50);
+        }
+    }
+    type();
+}
+
+/* Hearts */
+function startHearts() {
+    setInterval(() => {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+    }, 300);
+}
+
+/* Popup */
+function showPopup() {
+    document.getElementById("popup").style.display = "block";
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+
+/* Secret */
+function showSecret() {
+    alert("You found the secret 💖\n\nGaurii, you are my everything ❤️");
+}
+</script>
+
+</head>
+
+<body>
+
+<!-- 🎵 Music -->
+<audio id="bgmusic" loop>
+    <source src="music.mp3" type="audio/mp3">
+</audio>
+
+<!-- Login -->
+<div id="login">
+    <h2>Only for Gaurii 💖</h2>
+    <input type="password" id="password" placeholder="Enter Password">
+    <button onclick="checkPassword()">Enter</button>
+</div>
+
+<!-- Content -->
+<div id="content" class="container">
+
+    <h1>Gaurii 💖</h1>
+
+    <!-- Photos -->
+    <img src="photo1.jpg">
+    <img src="photo2.jpg">
+    <img src="photo3.jpg">
+
+    <!-- Quotes -->
+    <div class="card">"You are my today and all of my tomorrows." 💫</div>
+    <div class="card">"In a world full of temporary things, you are my forever." 💖</div>
+
+    <!-- Typing Message -->
+    <div id="typing"></div>
+
+    <!-- Name Section -->
+    <div class="card">
+        <h3>Abhikrishna 💙 Gaurikrishna</h3>
+        <p>Two hearts, one soul 💞</p>
+        <p>Forever together ❤️</p>
+    </div>
+
+    <!-- Surprise -->
+    <button onclick="showPopup()">🎁 Click for Surprise</button>
+
+    <!-- Popup -->
+    <div id="popup" class="popup">
+        <h2>I Love You Gaurii 💖</h2>
+        <p>You are my happiness, my love, my everything ❤️</p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+    <!-- Secret -->
+    <div class="secret-btn" onclick="showSecret()"></div>
+
+</div>
+
+</body>
+</html>
